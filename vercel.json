@@ -1,0 +1,24 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/public/login.html"
+    },
+    {
+      "source": "/login.html",
+      "destination": "/public/login.html"
+    },
+    {
+      "source": "/register.html",
+      "destination": "/public/register.html"
+    },
+    {
+      "source": "/dashboard.html",
+      "destination": "/public/dashboard.html"
+    },
+    {
+      "source": "/style.css",
+      "destination": "/public/style.css"
+    }
+  ]
+}
