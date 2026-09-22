@@ -16,10 +16,12 @@
 
         <div class="login-box">
 
+            <!-- Logo -->
             <div class="logo">
                 ♡
             </div>
 
+            <!-- Title -->
             <h1>Create Account</h1>
 
             <p class="subtitle">
@@ -27,16 +29,19 @@
             </p>
 
 
+            <!-- Register Form -->
             <form id="registerForm">
 
+                <!-- Username -->
                 <div class="input-group">
 
-                    <label for="username">Username</label>
+                    <label for="username">
+                        Username
+                    </label>
 
                     <input
                         type="text"
                         id="username"
-                        name="username"
                         placeholder="Enter your username"
                         required
                     >
@@ -44,14 +49,16 @@
                 </div>
 
 
+                <!-- Password -->
                 <div class="input-group">
 
-                    <label for="password">Password</label>
+                    <label for="password">
+                        Password
+                    </label>
 
                     <input
                         type="password"
                         id="password"
-                        name="password"
                         placeholder="Enter your password"
                         required
                     >
@@ -59,14 +66,16 @@
                 </div>
 
 
+                <!-- Confirm Password -->
                 <div class="input-group">
 
-                    <label for="confirmPassword">Confirm Password</label>
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
 
                     <input
                         type="password"
                         id="confirmPassword"
-                        name="confirmPassword"
                         placeholder="Confirm your password"
                         required
                     >
@@ -74,21 +83,24 @@
                 </div>
 
 
+                <!-- Create Account Button -->
                 <button type="submit">
                     Create Account
                 </button>
 
 
+                <!-- Message -->
                 <p id="message"></p>
 
             </form>
 
 
+            <!-- Login Link -->
             <p class="bottom-text">
 
                 Already have an account?
 
-                <a href="login.html">
+                <a href="/login.html">
                     Login
                 </a>
 
@@ -97,3 +109,102 @@
         </div>
 
     </div>
+
+
+    <script>
+
+        const form = document.getElementById("registerForm");
+
+        const message = document.getElementById("message");
+
+
+        form.addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+
+            const username =
+                document.getElementById("username").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+            const confirmPassword =
+                document.getElementById("confirmPassword").value;
+
+
+            // Check password
+            if (password !== confirmPassword) {
+
+                message.textContent =
+                    "Passwords do not match.";
+
+                return;
+            }
+
+
+            try {
+
+                const response = await fetch("/api/register", {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type": "application/json"
+
+                    },
+
+                    body: JSON.stringify({
+
+                        username: username,
+
+                        password: password
+
+                    })
+
+                });
+
+
+                const data = await response.json();
+
+
+                if (data.success) {
+
+                    message.textContent =
+                        "Account created successfully!";
+
+
+                    // Redirect to Login
+                    setTimeout(() => {
+
+                        window.location.href =
+                            "/login.html";
+
+                    }, 1000);
+
+
+                } else {
+
+                    message.textContent =
+                        data.message;
+
+                }
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                message.textContent =
+                    "Unable to connect to server.";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
