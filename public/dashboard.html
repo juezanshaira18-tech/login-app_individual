@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">♡</div>
+
+                <div>
+                    <h2>Cozy Space</h2>
+                    <p>Dashboard</p>
+                </div>
+            </div>
+
+            <nav>
+
+                <a href="#" class="active">
+                    <span>⌂</span>
+                    Home
+                </a>
+
+                <a href="#">
+                    <span>♡</span>
+                    Profile
+                </a>
+
+                <a href="#">
+                    <span>☷</span>
+                    Activities
+                </a>
+
+                <a href="#">
+                    <span>⚙</span>
+                    Settings
+                </a>
+
+            </nav>
+
+            <button class="logout-btn" onclick="logout()">
+                Logout
+            </button>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <header class="dashboard-header">
+
+                <div>
+                    <p class="welcome-small">Welcome back,</p>
+
+                    <h1>Hi, Shaira! ♡</h1>
+                </div>
+
+                <div class="profile-circle">
+                    S
+                </div>
+
+            </header>
+
+
+            <!-- WELCOME CARD -->
+
+            <section class="welcome-card">
+
+                <div>
+                    <p class="card-label">YOUR SPACE</p>
+
+                    <h2>Have a cozy day! ☕</h2>
+
+                    <p>
+                        Welcome to your personal dashboard.
+                        You can manage your activities and
+                        account here.
+                    </p>
+                </div>
+
+                <div class="coffee-icon">
+                    ☕
+                </div>
+
+            </section>
+
+
+            <!-- CARDS -->
+
+            <section class="dashboard-cards">
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        ♡
+                    </div>
+
+                    <h3>Profile</h3>
+
+                    <p>
+                        View and manage your personal information.
+                    </p>
+
+                    <button>
+                        View Profile
+                    </button>
+
+                </div>
+
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        ☷
+                    </div>
+
+                    <h3>Activities</h3>
+
+                    <p>
+                        Check your recent activities and updates.
+                    </p>
+
+                    <button>
+                        View Activities
+                    </button>
+
+                </div>
+
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        ⚙
+                    </div>
+
+                    <h3>Settings</h3>
+
+                    <p>
+                        Customize your account settings.
+                    </p>
+
+                    <button>
+                        Settings
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- RECENT ACTIVITY -->
+
+            <section class="recent-section">
+
+                <div class="section-title">
+
+                    <div>
+                        <h2>Recent Activity</h2>
+
+                        <p>
+                            Your latest updates
+                        </p>
+                    </div>
+
+                    <a href="#">View all</a>
+
+                </div>
+
+
+                <div class="activity-list">
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            ✓
+                        </div>
+
+                        <div>
+                            <h4>Successfully logged in</h4>
+
+                            <p>
+                                You logged into your account.
+                            </p>
+                        </div>
+
+                        <span>Just now</span>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            ♡
+                        </div>
+
+                        <div>
+                            <h4>Welcome to Cozy Space</h4>
+
+                            <p>
+                                Your dashboard is ready.
+                            </p>
+                        </div>
+
+                        <span>Today</span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script>
+
+        function logout() {
+
+            window.location.href = "login.html";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
