@@ -7,9 +7,8 @@ const User = require("../models/User");
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-
-// MongoDB connection
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         console.log("MongoDB connected successfully!");
@@ -18,12 +17,8 @@ mongoose.connect(process.env.MONGODB_URI)
         console.log("MongoDB connection error:", error);
     });
 
-
-// REGISTER
-app.post("/register", async (req, res) => {
-
+app.post("/api/register", async (req, res) => {
     try {
-
         const { username, password } = req.body;
 
         const existingUser = await User.findOne({
@@ -37,10 +32,7 @@ app.post("/register", async (req, res) => {
             });
         }
 
-        const hashedPassword = await bcrypt.hash(
-            password,
-            10
-        );
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         const newUser = new User({
             username: username,
@@ -55,24 +47,17 @@ app.post("/register", async (req, res) => {
         });
 
     } catch (error) {
-
         console.log("Registration error:", error);
 
         res.status(500).json({
             success: false,
             message: "Something went wrong."
         });
-
     }
-
 });
 
-
-// LOGIN
-app.post("/login", async (req, res) => {
-
+app.post("/api/login", async (req, res) => {
     try {
-
         const { username, password } = req.body;
 
         const user = await User.findOne({
@@ -104,17 +89,13 @@ app.post("/login", async (req, res) => {
         });
 
     } catch (error) {
-
         console.log("Login error:", error);
 
         res.status(500).json({
             success: false,
             message: "Something went wrong."
         });
-
     }
-
 });
-
 
 module.exports = app;
